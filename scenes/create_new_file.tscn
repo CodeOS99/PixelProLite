@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://crscrojno6pg3"]
+[gd_scene load_steps=3 format=3 uid="uid://crscrojno6pg3"]
+
+[ext_resource type="PackedScene" uid="uid://dekfd7elubhco" path="res://scenes/up_down_controlled_value.tscn" id="1_7jptm"]
+[ext_resource type="PackedScene" uid="uid://blonb44a54jmh" path="res://scenes/pay_wall.tscn" id="2_7t6lt"]
 
 [node name="CreateNewFile" type="Control"]
 layout_mode = 3
@@ -7,3 +10,52 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Resolution" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 320.0
+
+[node name="ResolutionLabel" type="Label" parent="Resolution"]
+layout_mode = 0
+offset_right = 242.0
+offset_bottom = 29.0
+theme_override_font_sizes/font_size = 32
+text = "Resolution:"
+
+[node name="ResolutionContainer" type="VBoxContainer" parent="Resolution"]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 1152.0
+offset_bottom = 121.0
+theme_override_constants/separation = 75
+alignment = 1
+
+[node name="WidthContainer" type="HBoxContainer" parent="Resolution/ResolutionContainer"]
+layout_mode = 2
+
+[node name="WidthLabel" type="Label" parent="Resolution/ResolutionContainer/WidthContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Width:"
+
+[node name="UpDownControlledValue" parent="Resolution/ResolutionContainer/WidthContainer" instance=ExtResource("1_7jptm")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Resolution/ResolutionContainer"]
+layout_mode = 2
+
+[node name="HeightLabel" type="Label" parent="Resolution/ResolutionContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Height:"
+
+[node name="UpDownControlledValue" parent="Resolution/ResolutionContainer/HBoxContainer" instance=ExtResource("1_7jptm")]
+layout_mode = 2
+
+[node name="PayWall" parent="Resolution" instance=ExtResource("2_7t6lt")]
+layout_mode = 2
+offset_left = 191.0
+offset_top = 56.0
+offset_right = 403.0
+offset_bottom = 192.0

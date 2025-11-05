@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dekfd7elubhco"]
+
+[ext_resource type="Script" path="res://scripts/up_down_controlled_value.gd" id="1_m8og6"]
+[ext_resource type="PackedScene" uid="uid://cmewdqgy3rusc" path="res://scenes/UpDownButton.tscn" id="1_ywe1j"]
+
+[node name="UpDownControlledValue" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_m8og6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(80.44, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="UpDownButton" parent="." instance=ExtResource("1_ywe1j")]
+layout_mode = 2
+min_change = 1
+max_change = 100
+change = 8
