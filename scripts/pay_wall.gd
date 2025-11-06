@@ -4,7 +4,7 @@ signal removed
 @export var cost_to_remove := 40
 
 func _ready() -> void:
-	$VBoxContainer/CostLabel.text = str(cost_to_remove) + "?"
+	$VBoxContainer/CostLabel.text = str(cost_to_remove) + "A"+ "?"
 
 func _on_buy_button_pressed() -> void:
 	if Globals.money >= cost_to_remove:

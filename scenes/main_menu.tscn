@@ -53,6 +53,13 @@ offset_top = -67.5
 offset_bottom = 67.5
 grow_vertical = 2
 
+[node name="Label" parent="NewFileFeeConfirmation/VBoxContainer" index="0"]
+text = "A file addition fee of 5A
+will be charged for making
+a new file."
+
 [connection signal="pressed" from="NewFileButton" to="NewFileButton" method="_on_pressed"]
 [connection signal="cancel_pressed" from="NewFileFeeConfirmation" to="." method="_on_new_file_fee_confirmation_cancel_pressed"]
 [connection signal="ok_pressed" from="NewFileFeeConfirmation" to="." method="_on_new_file_fee_confirmation_ok_pressed"]
+
+[editable path="NewFileFeeConfirmation"]

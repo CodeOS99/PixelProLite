@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyc3fr8p5vf5"]
+[gd_scene load_steps=3 format=3 uid="uid://cyc3fr8p5vf5"]
 
 [ext_resource type="Script" path="res://scripts/Popup.gd" id="1_60ors"]
+[ext_resource type="PackedScene" uid="uid://blonb44a54jmh" path="res://scenes/pay_wall.tscn" id="2_xn3ny"]
 
 [node name="Popup" type="PanelContainer"]
 anchors_preset = 7
@@ -41,7 +42,24 @@ layout_mode = 2
 text = "Cancel
 "
 
+[node name="PopupPaywall" parent="VBoxContainer/HBoxContainer/CancelButton" instance=ExtResource("2_xn3ny")]
+layout_mode = 2
+offset_left = -39.5
+offset_top = -28.0
+offset_right = 237.5
+offset_bottom = 107.0
+scale = Vector2(0.5, 0.5)
+cost_to_remove = 1
+
+[node name="DescLabel" parent="VBoxContainer/HBoxContainer/CancelButton/PopupPaywall/VBoxContainer" index="0"]
+text = "Unlock cancellation for:"
+
+[node name="CostLabel" parent="VBoxContainer/HBoxContainer/CancelButton/PopupPaywall/VBoxContainer" index="1"]
+text = "1A?"
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/OkButton" to="." method="_on_ok_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+
+[editable path="VBoxContainer/HBoxContainer/CancelButton/PopupPaywall"]
