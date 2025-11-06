@@ -10,6 +10,6 @@ func _ready() -> void:
 	print(pixel_size)
 	$GridContainer.columns = Globals.draw_size[0]
 	for i in range(Globals.draw_size[0] * Globals.draw_size[1]):
-		var px: Button = pixel.instantiate()
+		var px: Panel = pixel.instantiate()
 		$GridContainer.add_child(px)
 		px.custom_minimum_size = Vector2(pixel_size, pixel_size)

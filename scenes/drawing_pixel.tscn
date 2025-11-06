@@ -1,18 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://h5pudex7gjpg"]
+[gd_scene load_steps=3 format=3 uid="uid://h5pudex7gjpg"]
 
 [ext_resource type="Script" path="res://scripts/drawing_pixel.gd" id="1_kc42n"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8emh7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rajil"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jx5us"]
-bg_color = Color(0.6, 0.6, 0.6, 0.45098)
-
-[node name="DrawingPixel" type="Button"]
-custom_minimum_size = Vector2(60, 60)
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8emh7")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jx5us")
+[node name="DrawingPixel" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rajil")
 script = ExtResource("1_kc42n")
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
