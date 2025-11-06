@@ -1,4 +1,7 @@
 extends Button
 
+var bought := false
+
 func _on_pressed() -> void:
-	Globals.drawing_mode = "ERASER"
+	if bought:
+		Globals.drawing_mode = "ERASER"

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://xr8gdnf18lha"]
+[gd_scene load_steps=4 format=3 uid="uid://xr8gdnf18lha"]
 
-[ext_resource type="Script" path="res://scripts/ok_button.gd" id="1_4o5b1"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_cqh6c"]
 [ext_resource type="Script" path="res://scripts/new_file_button.gd" id="1_s1bc6"]
-[ext_resource type="Script" path="res://scripts/cancel_button.gd" id="2_eyng7"]
-[ext_resource type="Script" path="res://scripts/new_file_fee_confirmation.gd" id="2_icbwt"]
+[ext_resource type="PackedScene" uid="uid://cyc3fr8p5vf5" path="res://scenes/popup.tscn" id="2_4yqqy"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cqh6c")
 
 [node name="NewFileButton" type="Button" parent="."]
 layout_mode = 1
@@ -43,51 +43,16 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 100
 text = "PIXEL PRO LITE"
 
-[node name="NewFileFeeConfirmation" type="PanelContainer" parent="."]
+[node name="NewFileFeeConfirmation" parent="." instance=ExtResource("2_4yqqy")]
 visible = false
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -138.5
-offset_top = -135.0
-offset_right = 138.5
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("2_icbwt")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="NewFileFeeConfirmation"]
-layout_mode = 2
-theme_override_constants/separation = 45
-
-[node name="Label" type="Label" parent="NewFileFeeConfirmation/VBoxContainer"]
-layout_mode = 2
-text = "A file addition fee of 5A
-will be charged."
-
-[node name="HBoxContainer" type="HBoxContainer" parent="NewFileFeeConfirmation/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 100
-alignment = 1
-
-[node name="OkButton" type="Button" parent="NewFileFeeConfirmation/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 0
-text = "OK"
-script = ExtResource("1_4o5b1")
-
-[node name="CancelButton" type="Button" parent="NewFileFeeConfirmation/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Cancel
-"
-script = ExtResource("2_eyng7")
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -67.5
+offset_bottom = 67.5
+grow_vertical = 2
 
 [connection signal="pressed" from="NewFileButton" to="NewFileButton" method="_on_pressed"]
-[connection signal="mouse_entered" from="NewFileFeeConfirmation" to="NewFileFeeConfirmation" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="NewFileFeeConfirmation" to="NewFileFeeConfirmation" method="_on_mouse_exited"]
-[connection signal="pressed" from="NewFileFeeConfirmation/VBoxContainer/HBoxContainer/OkButton" to="NewFileFeeConfirmation/VBoxContainer/HBoxContainer/OkButton" method="_on_pressed"]
-[connection signal="pressed" from="NewFileFeeConfirmation/VBoxContainer/HBoxContainer/CancelButton" to="NewFileFeeConfirmation/VBoxContainer/HBoxContainer/CancelButton" method="_on_pressed"]
+[connection signal="cancel_pressed" from="NewFileFeeConfirmation" to="." method="_on_new_file_fee_confirmation_cancel_pressed"]
+[connection signal="ok_pressed" from="NewFileFeeConfirmation" to="." method="_on_new_file_fee_confirmation_ok_pressed"]

@@ -1,5 +1,8 @@
 extends PanelContainer
 
+signal ok_pressed
+signal cancel_pressed
+
 var mouse_in := false
 var mouse_pressed := false
 var offset := Vector2(0, 0)
@@ -19,3 +22,9 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	mouse_in = false
+
+func _on_ok_button_pressed() -> void:
+	ok_pressed.emit()
+
+func _on_cancel_button_pressed() -> void:
+	cancel_pressed.emit()

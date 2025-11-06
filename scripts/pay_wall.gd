@@ -8,6 +8,6 @@ func _ready() -> void:
 
 func _on_buy_button_pressed() -> void:
 	if Globals.money >= cost_to_remove:
-		Globals.money = cost_to_remove
+		Globals.money -= cost_to_remove
 		removed.emit()
 		self.queue_free()
