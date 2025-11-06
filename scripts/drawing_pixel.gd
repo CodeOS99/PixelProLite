@@ -1,4 +1,8 @@
-extends Panel
+class_name DrawingPixel extends Panel
+
+signal unhovered(idx: int)
+signal hovered(idx: int)
+signal pressed(idx: int)
 
 var orig_style: StyleBoxFlat
 var mouse_in := false
@@ -6,6 +10,8 @@ var mouse_pressed := false
 
 var hov_col
 var unhov_col
+
+var idx: int
 
 func _ready() -> void:
 	orig_style = get_theme_stylebox("panel")
@@ -19,7 +25,7 @@ func _process(delta: float) -> void:
 		mouse_pressed = false
 	
 	if mouse_in and mouse_pressed:
-		paint()
+		emit_signal("pressed", idx)
 
 func paint():
 	if Globals.drawing_mode == "PENCIL":
@@ -36,12 +42,18 @@ func paint():
 
 func _on_mouse_entered() -> void:
 	mouse_in = true
+	emit_signal("hovered", idx)
+
+func make_hov_col():
 	var style = StyleBoxFlat.new()
 	style.bg_color = hov_col
 	add_theme_stylebox_override("panel", style)
 
 func _on_mouse_exited() -> void:
 	mouse_in = false
+	emit_signal("unhovered", idx)
+
+func make_unhov_col():
 	var style = StyleBoxFlat.new()
 	style.bg_color = unhov_col
 	add_theme_stylebox_override("panel", style)

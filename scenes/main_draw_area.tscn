@@ -64,17 +64,39 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 70
 
-[node name="PencilButton" type="Button" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="VSlider" type="VSlider" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 92)
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="PencilButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 text = "Pencil"
 script = ExtResource("2_27bku")
 
-[node name="EraserButton" type="Button" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="VSlider" type="VSlider" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 92)
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="EraserButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 text = "Eraser"
 script = ExtResource("3_73k8m")
 
-[node name="Popup" parent="HBoxContainer/EraserButton" instance=ExtResource("5_ulgoo")]
+[node name="Popup" parent="HBoxContainer/VBoxContainer2/EraserButton" instance=ExtResource("5_ulgoo")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -84,13 +106,14 @@ offset_top = -67.5
 offset_bottom = 67.5
 grow_vertical = 2
 
-[node name="Label" parent="HBoxContainer/EraserButton/Popup/VBoxContainer" index="0"]
+[node name="Label" parent="HBoxContainer/VBoxContainer2/EraserButton/Popup/VBoxContainer" index="0"]
 text = "To purchase the eraser DLC, 
 please pay an additional 10A"
 
-[connection signal="pressed" from="HBoxContainer/PencilButton" to="HBoxContainer/PencilButton" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/EraserButton" to="HBoxContainer/EraserButton" method="_on_pressed"]
-[connection signal="cancel_pressed" from="HBoxContainer/EraserButton/Popup" to="HBoxContainer/EraserButton" method="_on_popup_cancel_pressed"]
-[connection signal="ok_pressed" from="HBoxContainer/EraserButton/Popup" to="HBoxContainer/EraserButton" method="_on_popup_ok_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/PencilButton" to="HBoxContainer/VBoxContainer/PencilButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/EraserButton" to="HBoxContainer/VBoxContainer2/EraserButton" method="_on_pressed"]
+[connection signal="cancel_pressed" from="HBoxContainer/VBoxContainer2/EraserButton/Popup" to="HBoxContainer/VBoxContainer2/EraserButton" method="_on_popup_cancel_pressed"]
+[connection signal="ok_pressed" from="HBoxContainer/VBoxContainer2/EraserButton/Popup" to="HBoxContainer/VBoxContainer2/EraserButton" method="_on_popup_ok_pressed"]
 
-[editable path="HBoxContainer/EraserButton/Popup"]
+[editable path="HBoxContainer/VBoxContainer2/EraserButton/Popup"]
+[editable path="HBoxContainer/VBoxContainer2/EraserButton/Popup/VBoxContainer/HBoxContainer/CancelButton/PopupPaywall"]
