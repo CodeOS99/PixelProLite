@@ -18,27 +18,28 @@ func _ready() -> void:
 		px.pressed.connect(px_clicked)
 
 func px_hovered(idx: int):
-	var affected = get_affected_indices(idx, Globals.radius)
+	var affected = get_affected_indices(idx)
 	
 	for px_idx in affected:
 		var px = $GridContainer.get_child(px_idx-1)
 		px.make_hov_col()
 
 func px_unhovered(idx: int):
-	var affected = get_affected_indices(idx, Globals.radius)
+	var affected = get_affected_indices(idx)
 	
 	for px_idx in affected:
 		var px = $GridContainer.get_child(px_idx-1)
 		px.make_unhov_col()
 
 func px_clicked(idx: int):
-	var affected = get_affected_indices(idx, Globals.radius)
+	var affected = get_affected_indices(idx)
 	
 	for px_idx in affected:
 		var px = $GridContainer.get_child(px_idx-1)
 		px.paint()
 
-func get_affected_indices(idx: int, radius: int):
+func get_affected_indices(idx: int):
+	var radius = $"../HBoxContainer/VBoxContainer/VSlider".value if Globals.drawing_mode == "PENCIL" else $"../HBoxContainer/VBoxContainer2/VSlider".value if Globals.drawing_mode == "ERASER" else 1
 	var affected = []
 	var columns = int(Globals.draw_size[0])
 	var rows = int(Globals.draw_size[1])
