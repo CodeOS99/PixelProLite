@@ -152,6 +152,15 @@ offset_bottom = 282.5
 grow_horizontal = 0
 grow_vertical = 2
 
+[node name="Popup" parent="." instance=ExtResource("5_ulgoo")]
+layout_mode = 0
+anchors_preset = 0
+
+[node name="Label" parent="Popup/VBoxContainer" index="0"]
+text = "You have reached your current color limit of
+1 color.
+Please pay an additional 5A for another color."
+
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/PencilButton" to="HBoxContainer/VBoxContainer/PencilButton" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/EraserButton" to="HBoxContainer/VBoxContainer2/EraserButton" method="_on_pressed"]
 [connection signal="cancel_pressed" from="HBoxContainer/VBoxContainer2/EraserButton/Popup" to="HBoxContainer/VBoxContainer2/EraserButton" method="_on_popup_cancel_pressed"]
@@ -160,3 +169,5 @@ grow_vertical = 2
 [editable path="HBoxContainer/VBoxContainer2/EraserButton/Popup"]
 [editable path="HBoxContainer/VBoxContainer2/EraserButton/Popup/VBoxContainer/HBoxContainer/CancelButton/PopupPaywall"]
 [editable path="SizePayWall"]
+[editable path="Popup"]
+[editable path="Popup/VBoxContainer/HBoxContainer/CancelButton/PopupPaywall"]

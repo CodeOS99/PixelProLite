@@ -3,6 +3,9 @@ extends Control
 var pixel_size: int
 
 var pixel = preload("res://scenes/drawing_pixel.tscn")
+var unique_colors: Array[Color] = []
+
+@onready var popup = $"../Popup"
 
 func _ready() -> void:
 	var available_area = get_viewport().size/2
@@ -16,6 +19,17 @@ func _ready() -> void:
 		px.hovered.connect(px_hovered)
 		px.unhovered.connect(px_unhovered)
 		px.pressed.connect(px_clicked)
+	
+	popup.ok_pressed.connect(func():
+		if Globals.money >= 5:
+			Globals.n_max_unique_cols += 1
+			Globals.money -= 5
+			popup.visible = false
+	)
+	popup.cancel_pressed.connect(func():
+		popup.visible = false
+	)
+	popup.text = "You have reached your current color limit of\n" + str(Globals.n_max_unique_cols) + " colors.\nPlease pay an additional 5A for another color."
 
 func px_hovered(idx: int):
 	var affected = get_affected_indices(idx)
@@ -32,6 +46,15 @@ func px_unhovered(idx: int):
 		px.make_unhov_col()
 
 func px_clicked(idx: int):
+	if Globals.curr_col not in unique_colors and Globals.drawing_mode == "PENCIL":
+		if len(unique_colors) < Globals.n_max_unique_cols:
+			unique_colors.append(Globals.curr_col)
+		else:
+			popup.text = "You have reached your current color limit of\n" + str(Globals.n_max_unique_cols) + " colors.\nPlease pay an additional 5A for another color."
+			popup.visible = true
+			popup.global_position = get_viewport().get_mouse_position()
+			return
+	
 	var affected = get_affected_indices(idx)
 	
 	for px_idx in affected:

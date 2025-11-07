@@ -7,6 +7,8 @@ var mouse_in := false
 var mouse_pressed := false
 var offset := Vector2(0, 0)
 
+@onready var text = $VBoxContainer/Label
+
 func _process(delta: float) -> void:
 	if mouse_in and mouse_pressed:
 		self.global_position = get_viewport().get_mouse_position() + offset
