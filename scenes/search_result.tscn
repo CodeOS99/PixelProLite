@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc258teao46n1"]
+
+[ext_resource type="Script" path="res://scripts/search_result.gd" id="1_7tyjt"]
+
+[node name="SearchResult" type="PanelContainer"]
+custom_minimum_size = Vector2(1150, 32)
+offset_right = 1000.0
+offset_bottom = 31.0
+script = ExtResource("1_7tyjt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+bbcode_enabled = true
+text = "This is a search!"
