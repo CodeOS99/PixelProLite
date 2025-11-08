@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://crqjrd446jcyy"]
+[gd_scene load_steps=21 format=3 uid="uid://crqjrd446jcyy"]
 
 [ext_resource type="PackedScene" uid="uid://c3auimvay4uhp" path="res://scenes/money_label.tscn" id="1_da0tx"]
 [ext_resource type="Script" path="res://scripts/drawing.gd" id="1_fhym6"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/help_button.gd" id="14_qjm3p"]
 [ext_resource type="Script" path="res://scripts/sell_button.gd" id="14_s4qae"]
 [ext_resource type="Script" path="res://scripts/about_button.gd" id="15_34pah"]
+[ext_resource type="Script" path="res://scripts/insta_sell_button.gd" id="15_abb5m"]
 [ext_resource type="Script" path="res://scripts/info_button.gd" id="16_7wrph"]
 [ext_resource type="Script" path="res://scripts/search_button.gd" id="17_mlq01"]
 [ext_resource type="Script" path="res://scripts/search_menu.gd" id="18_gnlpu"]
@@ -244,6 +245,7 @@ layout_mode = 2
 [node name="InstaSellButton" type="Button" parent="TopBar/VBoxContainer2/SellButtonContents/VBoxContainer"]
 layout_mode = 2
 text = "Sell Instantly"
+script = ExtResource("15_abb5m")
 
 [node name="DelayedSellButton" type="Button" parent="TopBar/VBoxContainer2/SellButtonContents/VBoxContainer"]
 layout_mode = 2
@@ -375,17 +377,28 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 placeholder_text = "Search a query to get started"
 
-[node name="SellCommissionPopup" parent="." instance=ExtResource("5_ulgoo")]
+[node name="InstaSellCommissionPopup" parent="." instance=ExtResource("5_ulgoo")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = -285.5
 offset_top = -531.0
 offset_right = -8.5
 offset_bottom = -396.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="Label" parent="SellCommissionPopup/VBoxContainer" index="0"]
-text = "A 10% sales commision will
-be taken."
+[node name="Label" parent="InstaSellCommissionPopup/VBoxContainer" index="0"]
+text = "Insta-sell will result is lesser money
+and higher commission.
+You will also be unable to change this 
+artwork and will have to make a new file
+to continue arting.
+Agree?"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/PencilButton" to="HBoxContainer/VBoxContainer/PencilButton" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/EraserButton" to="HBoxContainer/VBoxContainer2/EraserButton" method="_on_pressed"]
@@ -403,6 +416,8 @@ be taken."
 [connection signal="ok_pressed" from="NewFileFeeConfirmation" to="." method="_on_new_file_fee_confirmation_ok_pressed"]
 [connection signal="file_selected" from="FileDialog" to="TopBar/VBoxContainer/FileMenuContents/VBoxContainer/ExportButton" method="_on_file_dialog_file_selected"]
 [connection signal="text_changed" from="SearchMenu/VBoxContainer/TextEdit" to="SearchMenu" method="_on_text_edit_text_changed"]
+[connection signal="cancel_pressed" from="InstaSellCommissionPopup" to="TopBar/VBoxContainer2/SellButtonContents/VBoxContainer/InstaSellButton" method="_on_insta_sell_commission_popup_cancel_pressed"]
+[connection signal="ok_pressed" from="InstaSellCommissionPopup" to="TopBar/VBoxContainer2/SellButtonContents/VBoxContainer/InstaSellButton" method="_on_insta_sell_commission_popup_ok_pressed"]
 
 [editable path="HBoxContainer/VBoxContainer2/EraserButton/Popup"]
 [editable path="HBoxContainer/VBoxContainer2/EraserButton/Popup/VBoxContainer/HBoxContainer/CancelButton/PopupPaywall"]
@@ -413,5 +428,5 @@ be taken."
 [editable path="NewFileFeeConfirmation/VBoxContainer/HBoxContainer/CancelButton/PopupPaywall"]
 [editable path="ExportPricePopup"]
 [editable path="ExportPricePopup/VBoxContainer/HBoxContainer/CancelButton/PopupPaywall"]
-[editable path="SellCommissionPopup"]
-[editable path="SellCommissionPopup/VBoxContainer/HBoxContainer/CancelButton/PopupPaywall"]
+[editable path="InstaSellCommissionPopup"]
+[editable path="InstaSellCommissionPopup/VBoxContainer/HBoxContainer/CancelButton/PopupPaywall"]
