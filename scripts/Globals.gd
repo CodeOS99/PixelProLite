@@ -6,6 +6,7 @@ static var curr_col := Color(0, 0, 0)
 static var drawing_mode = "PENCIL"
 static var radius = 1
 static var n_max_unique_cols: int = 1
+
 static var resolution_bonus: int = 0
 static var col_mastery: int = 0
 static var effort_bonus: int = 0

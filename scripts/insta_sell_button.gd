@@ -4,7 +4,6 @@ var accepted_terms = false
 
 func _on_insta_sell_commission_popup_ok_pressed() -> void:
 	accepted_terms = true
-	get_tree().change_scene_to_file("res://scenes/insta_sell.tscn")
 	
 	Globals.resolution_bonus = (Globals.draw_size[0] * Globals.draw_size[1])/100 * 5
 	Globals.col_mastery = Globals.n_max_unique_cols ** 1.5 * 2
@@ -37,5 +36,11 @@ func _on_insta_sell_commission_popup_ok_pressed() -> void:
 	Globals.insta_sell_commision = .75
 	Globals.total_gain = ceil(Globals.total_price * Globals.market_fluctuations * Globals.insta_sell_commision)
 
+	get_tree().change_scene_to_file("res://scenes/insta_sell.tscn")
+
 func _on_insta_sell_commission_popup_cancel_pressed() -> void:
 	$"../../../../../InstaSellCommissionPopup".visible = false
+
+func _on_pressed() -> void:
+	print("yes")
+	$"../../../../../InstaSellCommissionPopup".visible = true

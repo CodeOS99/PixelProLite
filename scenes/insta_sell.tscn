@@ -1,4 +1,15 @@
-[gd_scene format=3 uid="uid://cq2s7jr5qgvmy"]
+[gd_scene load_steps=11 format=3 uid="uid://cq2s7jr5qgvmy"]
+
+[ext_resource type="Script" path="res://scripts/receipt_label_container.gd" id="1_2lcgw"]
+[ext_resource type="Script" path="res://scripts/resolution_label.gd" id="1_p1byn"]
+[ext_resource type="Script" path="res://scripts/color_mastery_label.gd" id="3_xt11j"]
+[ext_resource type="Script" path="res://scripts/effort_bonus.gd" id="4_jww7a"]
+[ext_resource type="Script" path="res://scripts/detail_bonus.gd" id="5_dipud"]
+[ext_resource type="Script" path="res://scripts/total_price.gd" id="6_5lr4e"]
+[ext_resource type="Script" path="res://scripts/market_fluctuations.gd" id="7_r5acq"]
+[ext_resource type="Script" path="res://scripts/total_received.gd" id="8_gcs5q"]
+[ext_resource type="Script" path="res://scripts/insta_sell_commission.gd" id="9_ciuk5"]
+[ext_resource type="Script" path="res://scripts/net_gain.gd" id="10_aashd"]
 
 [node name="InstaSell" type="Control"]
 layout_mode = 3
@@ -8,14 +19,63 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ReceiptLabelContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_2lcgw")
 
-[node name="BasePriceLabel" type="Label" parent="VBoxContainer"]
+[node name="SaleSummary" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "INSTA-SALE SUMMARY"
+
+[node name="BasePriceLabel" type="Label" parent="ReceiptLabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Base Price: 10A"
 
-[node name="ResolutionBonusLabel" type="Label" parent="VBoxContainer"]
+[node name="ResolutionLabel" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("1_p1byn")
+
+[node name="ColorMasteryLabel" type="Label" parent="ReceiptLabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("3_xt11j")
+
+[node name="EffortBonus" type="Label" parent="ReceiptLabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("4_jww7a")
+
+[node name="DetailBonus" type="Label" parent="ReceiptLabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("5_dipud")
+
+[node name="TotalPrice" type="Label" parent="ReceiptLabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("6_5lr4e")
+
+[node name="MarketFluctuations" type="Label" parent="ReceiptLabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("7_r5acq")
+
+[node name="TotalReceived" type="Label" parent="ReceiptLabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("8_gcs5q")
+
+[node name="InstaSellCommission" type="Label" parent="ReceiptLabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("9_ciuk5")
+
+[node name="NetGain" type="Label" parent="ReceiptLabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+script = ExtResource("10_aashd")

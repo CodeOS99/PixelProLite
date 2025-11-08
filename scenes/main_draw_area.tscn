@@ -97,7 +97,6 @@ theme_override_font_sizes/font_size = 16
 text = "Pencil"
 icon = ExtResource("4_n8p2c")
 script = ExtResource("2_27bku")
-theme_override_font_sizes/font_size = 16
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -379,18 +378,15 @@ placeholder_text = "Search a query to get started"
 
 [node name="InstaSellCommissionPopup" parent="." instance=ExtResource("5_ulgoo")]
 visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -285.5
-offset_top = -531.0
-offset_right = -8.5
-offset_bottom = -396.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -230.5
+offset_top = -86.5
+offset_right = 230.5
+offset_bottom = 86.5
+grow_vertical = 2
 
 [node name="Label" parent="InstaSellCommissionPopup/VBoxContainer" index="0"]
 text = "Insta-sell will result is lesser money
@@ -408,6 +404,7 @@ Agree?"
 [connection signal="pressed" from="TopBar/VBoxContainer/FileMenuContents/VBoxContainer/ExportButton" to="TopBar/VBoxContainer/FileMenuContents/VBoxContainer/ExportButton" method="_on_pressed"]
 [connection signal="pressed" from="TopBar/VBoxContainer/FileMenuContents/VBoxContainer/NewFileButton" to="TopBar/VBoxContainer/FileMenuContents/VBoxContainer/NewFileButton" method="_on_pressed"]
 [connection signal="pressed" from="TopBar/VBoxContainer2/SellButton" to="TopBar/VBoxContainer2/SellButton" method="_on_pressed"]
+[connection signal="pressed" from="TopBar/VBoxContainer2/SellButtonContents/VBoxContainer/InstaSellButton" to="TopBar/VBoxContainer2/SellButtonContents/VBoxContainer/InstaSellButton" method="_on_pressed"]
 [connection signal="pressed" from="TopBar/VBoxContainer3/HelpButton" to="TopBar/VBoxContainer3/HelpButton" method="_on_pressed"]
 [connection signal="pressed" from="TopBar/VBoxContainer3/HelpMenuContents/VBoxContainer/AboutButton" to="TopBar/VBoxContainer3/HelpMenuContents/VBoxContainer/AboutButton" method="_on_pressed"]
 [connection signal="pressed" from="TopBar/VBoxContainer3/HelpMenuContents/VBoxContainer/InfoButton" to="TopBar/VBoxContainer3/HelpMenuContents/VBoxContainer/InfoButton" method="_on_pressed"]
