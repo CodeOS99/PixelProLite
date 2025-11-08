@@ -13,6 +13,8 @@ var unhov_col
 
 var idx: int
 
+var painted := false
+
 func _ready() -> void:
 	orig_style = get_theme_stylebox("panel")
 	unhov_col = orig_style.bg_color
@@ -35,10 +37,12 @@ func paint():
 		unhov_col = style.bg_color
 		var offs = -20
 		hov_col = Color(max(unhov_col.r-offs, 0), max(unhov_col.g-offs, 0), max(unhov_col.b-offs, 0))
+		painted = true
 	elif Globals.drawing_mode == "ERASER":
 		add_theme_stylebox_override("panel", orig_style)
 		unhov_col = orig_style.bg_color
 		hov_col = Color(.95, .95, .95)
+		painted = false
 
 func _on_mouse_entered() -> void:
 	mouse_in = true
