@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crqjrd446jcyy"]
+[gd_scene load_steps=15 format=3 uid="uid://crqjrd446jcyy"]
 
 [ext_resource type="PackedScene" uid="uid://c3auimvay4uhp" path="res://scenes/money_label.tscn" id="1_da0tx"]
 [ext_resource type="Script" path="res://scripts/drawing.gd" id="1_fhym6"]
@@ -6,11 +6,14 @@
 [ext_resource type="Script" path="res://scripts/pencil_button.gd" id="2_27bku"]
 [ext_resource type="Script" path="res://scripts/eraser_button.gd" id="3_73k8m"]
 [ext_resource type="PackedScene" uid="uid://blonb44a54jmh" path="res://scenes/pay_wall.tscn" id="4_0l0ig"]
+[ext_resource type="Texture2D" uid="uid://c5qexk01v2pvr" path="res://assets/pencil/pencil.png" id="4_n8p2c"]
 [ext_resource type="PackedScene" uid="uid://cyc3fr8p5vf5" path="res://scenes/popup.tscn" id="5_ulgoo"]
+[ext_resource type="Texture2D" uid="uid://bg2vbumkr231w" path="res://assets/eraser/eraser.png" id="6_v8c1v"]
 [ext_resource type="Script" path="res://scripts/color_picker.gd" id="7_8lua7"]
 [ext_resource type="Script" path="res://scripts/file_menu.gd" id="8_mcsov"]
 [ext_resource type="Script" path="res://scripts/new_file_button.gd" id="9_kdjts"]
 [ext_resource type="Script" path="res://scripts/export_button.gd" id="10_g5cn6"]
+[ext_resource type="Script" path="res://scripts/help_button.gd" id="14_qjm3p"]
 
 [node name="MainDrawArea" type="Control"]
 layout_mode = 3
@@ -84,8 +87,11 @@ value = 1.0
 [node name="PencilButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Pencil"
+icon = ExtResource("4_n8p2c")
 script = ExtResource("2_27bku")
+theme_override_font_sizes/font_size = 16
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -100,7 +106,9 @@ value = 1.0
 [node name="EraserButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Eraser"
+icon = ExtResource("6_v8c1v")
 script = ExtResource("3_73k8m")
 
 [node name="Popup" parent="HBoxContainer/VBoxContainer2/EraserButton" instance=ExtResource("5_ulgoo")]
@@ -120,10 +128,10 @@ please pay an additional 10A"
 [node name="SizePayWall" parent="." instance=ExtResource("4_0l0ig")]
 layout_mode = 2
 anchor_top = 0.735
-anchor_right = 0.197
+anchor_right = 0.32
 anchor_bottom = 1.0
 offset_top = -0.279999
-offset_right = -14.944
+offset_right = -2.64001
 offset_bottom = -75.0
 cost_to_remove = 20
 
@@ -222,9 +230,30 @@ text = "Sell"
 [node name="VBoxContainer3" type="VBoxContainer" parent="TopBar"]
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="TopBar/VBoxContainer3"]
+[node name="HelpButton" type="Button" parent="TopBar/VBoxContainer3"]
 layout_mode = 2
 text = "Help"
+script = ExtResource("14_qjm3p")
+
+[node name="HelpMenu" type="PanelContainer" parent="TopBar/VBoxContainer3"]
+visible = false
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopBar/VBoxContainer3/HelpMenu"]
+layout_mode = 2
+
+[node name="AboutButton" type="Button" parent="TopBar/VBoxContainer3/HelpMenu/VBoxContainer"]
+layout_mode = 2
+text = "About"
+
+[node name="InfoButton" type="Button" parent="TopBar/VBoxContainer3/HelpMenu/VBoxContainer"]
+layout_mode = 2
+text = "Info"
+
+[node name="SearchButton" type="Button" parent="TopBar/VBoxContainer3/HelpMenu/VBoxContainer"]
+layout_mode = 2
+text = "Search"
 
 [node name="NewFileFeeConfirmation" parent="." instance=ExtResource("5_ulgoo")]
 visible = false
@@ -280,6 +309,13 @@ initial_position = 2
 size = Vector2i(260, 100)
 dialog_text = "Exported successfully!"
 
+[node name="AboutDialogue" type="AcceptDialog" parent="."]
+title = "About"
+initial_position = 2
+size = Vector2i(880, 100)
+dialog_text = "Pixel Pro Lite is a premium pixel art making program, with a strong emphasis
+on non-disturbance and user satisfaction."
+
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/PencilButton" to="HBoxContainer/VBoxContainer/PencilButton" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/EraserButton" to="HBoxContainer/VBoxContainer2/EraserButton" method="_on_pressed"]
 [connection signal="cancel_pressed" from="HBoxContainer/VBoxContainer2/EraserButton/Popup" to="HBoxContainer/VBoxContainer2/EraserButton" method="_on_popup_cancel_pressed"]
@@ -287,6 +323,7 @@ dialog_text = "Exported successfully!"
 [connection signal="pressed" from="TopBar/VBoxContainer/FileMenu" to="TopBar/VBoxContainer/FileMenu" method="_on_pressed"]
 [connection signal="pressed" from="TopBar/VBoxContainer/FileMenuContents/VBoxContainer/ExportButton" to="TopBar/VBoxContainer/FileMenuContents/VBoxContainer/ExportButton" method="_on_pressed"]
 [connection signal="pressed" from="TopBar/VBoxContainer/FileMenuContents/VBoxContainer/NewFileButton" to="TopBar/VBoxContainer/FileMenuContents/VBoxContainer/NewFileButton" method="_on_pressed"]
+[connection signal="pressed" from="TopBar/VBoxContainer3/HelpButton" to="TopBar/VBoxContainer3/HelpButton" method="_on_pressed"]
 [connection signal="cancel_pressed" from="NewFileFeeConfirmation" to="." method="_on_new_file_fee_confirmation_cancel_pressed"]
 [connection signal="ok_pressed" from="NewFileFeeConfirmation" to="." method="_on_new_file_fee_confirmation_ok_pressed"]
 [connection signal="file_selected" from="FileDialog" to="TopBar/VBoxContainer/FileMenuContents/VBoxContainer/ExportButton" method="_on_file_dialog_file_selected"]
