@@ -5,3 +5,5 @@ func _ready() -> void:
 		get_child(i).modulate.a = 0
 		var t = create_tween()
 		t.tween_property(get_child(i), "modulate", Color(1, 1, 1, 1), 1).set_delay(i*1)
+	
+	Globals.money += Globals.total_gain
