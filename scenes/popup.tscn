@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyc3fr8p5vf5"]
+[gd_scene load_steps=5 format=3 uid="uid://cyc3fr8p5vf5"]
 
 [ext_resource type="Script" path="res://scripts/Popup.gd" id="1_60ors"]
+[ext_resource type="Texture2D" uid="uid://brnsnwib25yg5" path="res://assets/tickmark/tick.png" id="2_aat1v"]
 [ext_resource type="PackedScene" uid="uid://blonb44a54jmh" path="res://scenes/pay_wall.tscn" id="2_xn3ny"]
+[ext_resource type="Texture2D" uid="uid://dnfak056c1xbt" path="res://assets/cross/cross.png" id="3_7s4qo"]
 
 [node name="Popup" type="PanelContainer"]
 anchors_preset = 7
@@ -36,18 +38,20 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 0
 text = "OK"
+icon = ExtResource("2_aat1v")
 
 [node name="CancelButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Cancel
 "
+icon = ExtResource("3_7s4qo")
 
 [node name="PopupPaywall" parent="VBoxContainer/HBoxContainer/CancelButton" instance=ExtResource("2_xn3ny")]
 layout_mode = 2
-offset_left = -39.5
-offset_top = -28.0
-offset_right = 237.5
-offset_bottom = 107.0
+offset_left = -22.5
+offset_top = -13.0
+offset_right = 254.5
+offset_bottom = 122.0
 scale = Vector2(0.5, 0.5)
 cost_to_remove = 1
 

@@ -255,7 +255,7 @@ script = ExtResource("15_abb5m")
 
 [node name="DelayedSellButton" type="Button" parent="TopBar/VBoxContainer2/SellButtonContents/VBoxContainer"]
 layout_mode = 2
-text = "DelayedSellButton"
+text = "Delayed Sell"
 script = ExtResource("16_qteor")
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="TopBar"]
