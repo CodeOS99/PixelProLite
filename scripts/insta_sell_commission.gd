@@ -1,4 +1,9 @@
 extends Label
 
-func _ready() -> void:
-	text = "Insta-Sell Commission: " + str(1-Globals.insta_sell_commision)
+var curr_num = 0
+
+func start_tween():
+	pass
+
+func _process(delta: float) -> void:
+	text = "Insta-Sell Commission: " + str(curr_num)

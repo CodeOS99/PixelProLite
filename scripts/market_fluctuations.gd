@@ -1,4 +1,9 @@
 extends Label
 
-func _ready() -> void:
-	text = "Market Fluctuation: " + str(Globals.market_fluctuations)
+var curr_num = 0
+
+func start_tween():
+	pass
+
+func _process(delta: float) -> void:
+	text = "Market Fluctuation: " + str(curr_num)

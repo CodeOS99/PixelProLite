@@ -19,3 +19,4 @@ static var insta_sell_commision: float = .75
 static var total_gain: int = 0
 
 static var sale_type: String
+static var typewriter_time: int = 2
