@@ -74,6 +74,8 @@ func px_clicked(idx: int):
 
 func get_affected_indices(idx: int):
 	var radius = $"../HBoxContainer/VBoxContainer/VSlider".value if Globals.drawing_mode == "PENCIL" else $"../HBoxContainer/VBoxContainer2/VSlider".value if Globals.drawing_mode == "ERASER" else 1
+	if radius == 0:
+		return [idx]
 	var affected = []
 	var columns = int(Globals.draw_size[0])
 	var rows = int(Globals.draw_size[1])

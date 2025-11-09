@@ -157,7 +157,7 @@ new_file_fee_confirmation_node = NodePath("../../NewFileFeeConfirmation")
 [node name="MoneyLabel" parent="ReceiptLabelContainer" instance=ExtResource("16_tmdty")]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+instaText = false
 
 [connection signal="cancel_pressed" from="NewFileFeeConfirmation" to="ReceiptLabelContainer" method="_on_new_file_fee_confirmation_cancel_pressed"]
 [connection signal="ok_pressed" from="NewFileFeeConfirmation" to="ReceiptLabelContainer" method="_on_new_file_fee_confirmation_ok_pressed"]

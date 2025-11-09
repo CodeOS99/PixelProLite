@@ -97,9 +97,7 @@ layout_mode = 2
 [node name="VSlider" type="VSlider" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 92)
 layout_mode = 2
-min_value = 1.0
 max_value = 10.0
-value = 1.0
 
 [node name="PencilButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(72, 72)
@@ -115,9 +113,7 @@ layout_mode = 2
 [node name="VSlider" type="VSlider" parent="HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 92)
 layout_mode = 2
-min_value = 1.0
 max_value = 10.0
-value = 1.0
 
 [node name="EraserButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(72, 72)
