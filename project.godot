@@ -22,6 +22,7 @@ UiSoundAutoload="*res://scripts/ui_sound_autoload.gd"
 [display]
 
 window/subwindows/embed_subwindows=false
+mouse_cursor/custom_image="res://assets/cursor/cursor.png"
 
 [editor_plugins]
 

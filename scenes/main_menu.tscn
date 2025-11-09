@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://xr8gdnf18lha"]
+[gd_scene load_steps=5 format=3 uid="uid://xr8gdnf18lha"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_cqh6c"]
 [ext_resource type="Script" path="res://scripts/new_file_button.gd" id="1_s1bc6"]
 [ext_resource type="PackedScene" uid="uid://cyc3fr8p5vf5" path="res://scenes/popup.tscn" id="2_4yqqy"]
+[ext_resource type="Texture2D" uid="uid://cna5t16fcksar" path="res://assets/bg/bg1.png" id="2_vyakh"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +13,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cqh6c")
+
+[node name="parallax_bg_1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vyakh")
 
 [node name="NewFileButton" type="Button" parent="." node_paths=PackedStringArray("new_file_fee_confirmation_node")]
 layout_mode = 1
