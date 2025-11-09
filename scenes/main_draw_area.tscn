@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://crqjrd446jcyy"]
+[gd_scene load_steps=29 format=3 uid="uid://crqjrd446jcyy"]
 
 [ext_resource type="PackedScene" uid="uid://c3auimvay4uhp" path="res://scenes/money_label.tscn" id="1_da0tx"]
 [ext_resource type="Script" path="res://scripts/drawing.gd" id="1_fhym6"]
@@ -24,6 +24,8 @@
 [ext_resource type="Script" path="res://scripts/search_button.gd" id="17_mlq01"]
 [ext_resource type="Script" path="res://scripts/search_menu.gd" id="18_gnlpu"]
 [ext_resource type="Script" path="res://scripts/progress_bar.gd" id="22_dko0e"]
+[ext_resource type="Texture2D" uid="uid://dnfak056c1xbt" path="res://assets/cross/cross.png" id="24_cnr5t"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="26_pacsw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htgfn"]
 
@@ -396,11 +398,6 @@ script = ExtResource("18_gnlpu")
 [node name="VBoxContainer" type="VBoxContainer" parent="SearchMenu"]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="SearchMenu/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-placeholder_text = "Search a query to get started"
-
 [node name="InstaSellCommissionPopup" parent="." instance=ExtResource("5_ulgoo")]
 visible = false
 layout_mode = 1
@@ -459,6 +456,20 @@ theme_override_styles/background = SubResource("StyleBoxFlat_htgfn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5sgfr")
 script = ExtResource("22_dko0e")
 
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.711806
+anchor_top = 0.253086
+anchor_right = 0.711806
+anchor_bottom = 0.253086
+offset_left = -40.0
+offset_bottom = 40.0
+icon = ExtResource("24_cnr5t")
+script = ExtResource("26_pacsw")
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/PencilButton" to="HBoxContainer/VBoxContainer/PencilButton" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/EraserButton" to="HBoxContainer/VBoxContainer2/EraserButton" method="_on_pressed"]
 [connection signal="cancel_pressed" from="HBoxContainer/VBoxContainer2/EraserButton/Popup" to="HBoxContainer/VBoxContainer2/EraserButton" method="_on_popup_cancel_pressed"]
@@ -476,11 +487,11 @@ script = ExtResource("22_dko0e")
 [connection signal="cancel_pressed" from="NewFileFeeConfirmation" to="." method="_on_new_file_fee_confirmation_cancel_pressed"]
 [connection signal="ok_pressed" from="NewFileFeeConfirmation" to="." method="_on_new_file_fee_confirmation_ok_pressed"]
 [connection signal="file_selected" from="FileDialog" to="TopBar/VBoxContainer/FileMenuContents/VBoxContainer/ExportButton" method="_on_file_dialog_file_selected"]
-[connection signal="text_changed" from="SearchMenu/VBoxContainer/TextEdit" to="SearchMenu" method="_on_text_edit_text_changed"]
 [connection signal="cancel_pressed" from="InstaSellCommissionPopup" to="TopBar/VBoxContainer2/SellButtonContents/VBoxContainer/InstaSellButton" method="_on_insta_sell_commission_popup_cancel_pressed"]
 [connection signal="ok_pressed" from="InstaSellCommissionPopup" to="TopBar/VBoxContainer2/SellButtonContents/VBoxContainer/InstaSellButton" method="_on_insta_sell_commission_popup_ok_pressed"]
 [connection signal="cancel_pressed" from="DelayedSellCommissionPopup" to="TopBar/VBoxContainer2/SellButtonContents/VBoxContainer/DelayedSellButton" method="_on_delayed_sell_commission_popup_cancel_pressed"]
 [connection signal="ok_pressed" from="DelayedSellCommissionPopup" to="TopBar/VBoxContainer2/SellButtonContents/VBoxContainer/DelayedSellButton" method="_on_delayed_sell_commission_popup_ok_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 
 [editable path="HBoxContainer/VBoxContainer2/EraserButton/Popup"]
 [editable path="HBoxContainer/VBoxContainer2/EraserButton/Popup/VBoxContainer/HBoxContainer/CancelButton/PopupPaywall"]
