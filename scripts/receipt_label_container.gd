@@ -7,3 +7,9 @@ func _ready() -> void:
 		t.tween_property(get_child(i), "modulate", Color(1, 1, 1, 1), 1).set_delay(i*1)
 	
 	Globals.money += Globals.total_gain
+
+func _on_new_file_fee_confirmation_ok_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/create_new_file.tscn")
+
+func _on_new_file_fee_confirmation_cancel_pressed() -> void:
+	$"../NewFileFeeConfirmation".visible = false
