@@ -56,6 +56,7 @@ a new file."
 
 [node name="MoneyCounter" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_b5gom")
+volume_db = -15.0
 
 [node name="ReceiptLabelContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

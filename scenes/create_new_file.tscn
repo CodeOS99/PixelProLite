@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://crscrojno6pg3"]
+[gd_scene load_steps=6 format=3 uid="uid://crscrojno6pg3"]
 
 [ext_resource type="PackedScene" uid="uid://dekfd7elubhco" path="res://scenes/up_down_controlled_value.tscn" id="1_7jptm"]
 [ext_resource type="PackedScene" uid="uid://c3auimvay4uhp" path="res://scenes/money_label.tscn" id="1_w4msl"]
+[ext_resource type="Texture2D" uid="uid://cna5t16fcksar" path="res://assets/bg/bg1.png" id="1_wmih5"]
 [ext_resource type="PackedScene" uid="uid://blonb44a54jmh" path="res://scenes/pay_wall.tscn" id="2_7t6lt"]
 [ext_resource type="Script" path="res://scripts/create_file_button.gd" id="3_xd3o8"]
 
@@ -12,6 +13,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="parallax_bg_1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wmih5")
 
 [node name="MoneyLabel" parent="." instance=ExtResource("1_w4msl")]
 layout_mode = 1
