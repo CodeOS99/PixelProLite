@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://crqjrd446jcyy"]
+[gd_scene load_steps=26 format=3 uid="uid://crqjrd446jcyy"]
 
 [ext_resource type="PackedScene" uid="uid://c3auimvay4uhp" path="res://scenes/money_label.tscn" id="1_da0tx"]
 [ext_resource type="Script" path="res://scripts/drawing.gd" id="1_fhym6"]
 [ext_resource type="Script" path="res://scripts/main_draw_area.gd" id="1_u4gaw"]
 [ext_resource type="Script" path="res://scripts/pencil_button.gd" id="2_27bku"]
+[ext_resource type="AudioStream" uid="uid://b55b1mmjfmx02" path="res://assets/paint.wav" id="2_pm2qg"]
 [ext_resource type="Script" path="res://scripts/eraser_button.gd" id="3_73k8m"]
 [ext_resource type="PackedScene" uid="uid://blonb44a54jmh" path="res://scenes/pay_wall.tscn" id="4_0l0ig"]
 [ext_resource type="Texture2D" uid="uid://c5qexk01v2pvr" path="res://assets/pencil/pencil.png" id="4_n8p2c"]
@@ -36,6 +37,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u4gaw")
+
+[node name="Paint" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pm2qg")
 
 [node name="MoneyLabel" parent="." instance=ExtResource("1_da0tx")]
 layout_mode = 1

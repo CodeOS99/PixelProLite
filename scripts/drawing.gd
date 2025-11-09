@@ -4,6 +4,7 @@ var pixel_size: int
 
 var pixel = preload("res://scenes/drawing_pixel.tscn")
 var unique_colors: Array[Color] = []
+var is_painting := false
 
 @onready var popup = $"../Popup"
 
@@ -31,6 +32,12 @@ func _ready() -> void:
 	)
 	popup.text = "You have reached your current color limit of\n" + str(Globals.n_max_unique_cols) + " colors.\nPlease pay an additional 5A for another color."
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and not event.pressed:
+		if is_painting:
+			is_painting = false
+			$"../Paint".stop()
+
 func px_hovered(idx: int):
 	var affected = get_affected_indices(idx)
 	
@@ -54,6 +61,10 @@ func px_clicked(idx: int):
 			popup.visible = true
 			popup.global_position = get_viewport().get_mouse_position()
 			return
+	if not is_painting:
+		is_painting = true
+		if not $"../Paint".playing:
+			$"../Paint".play()
 	
 	var affected = get_affected_indices(idx)
 	
