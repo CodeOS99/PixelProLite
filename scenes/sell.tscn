@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cq2s7jr5qgvmy"]
+[gd_scene load_steps=20 format=3 uid="uid://cq2s7jr5qgvmy"]
 
 [ext_resource type="FontFile" uid="uid://c882i8e2mg7wd" path="res://assets/fonts/MerchantCopy-GOXq.ttf" id="1_24ilj"]
 [ext_resource type="PackedScene" uid="uid://cyc3fr8p5vf5" path="res://scenes/popup.tscn" id="1_pg70h"]
 [ext_resource type="Script" path="res://scripts/receipt_label_container.gd" id="2_7y6xr"]
 [ext_resource type="Texture2D" uid="uid://dgkanbqmsqqj0" path="res://assets/paper_bg.jpg" id="2_ohcd1"]
 [ext_resource type="Script" path="res://scripts/sale_summary.gd" id="3_w12bu"]
+[ext_resource type="AudioStream" uid="uid://wiv5rg0huxgt" path="res://assets/money_counter.mp3" id="4_b5gom"]
 [ext_resource type="Script" path="res://scripts/resolution_label.gd" id="4_inaw1"]
 [ext_resource type="Script" path="res://scripts/color_mastery_label.gd" id="5_byj1x"]
 [ext_resource type="Script" path="res://scripts/effort_bonus.gd" id="6_jqhll"]
@@ -52,6 +53,9 @@ grow_vertical = 2
 text = "A file addition fee of 5A
 will be charged for making
 a new file."
+
+[node name="MoneyCounter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b5gom")
 
 [node name="ReceiptLabelContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -152,6 +156,7 @@ new_file_fee_confirmation_node = NodePath("../../NewFileFeeConfirmation")
 
 [node name="MoneyLabel" parent="ReceiptLabelContainer" instance=ExtResource("16_tmdty")]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [connection signal="cancel_pressed" from="NewFileFeeConfirmation" to="ReceiptLabelContainer" method="_on_new_file_fee_confirmation_cancel_pressed"]

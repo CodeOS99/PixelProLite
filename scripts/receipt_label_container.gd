@@ -9,6 +9,10 @@ func _ready() -> void:
 		if get_child(i) is Label:
 			t.tween_callback(func():
 				get_child(i).start_tween()
+				var sound = $"../MoneyCounter".duplicate()
+				add_child(sound)
+				sound.play()
+				sound.finished.connect(sound.queue_free)
 			)
 	Globals.money += Globals.total_gain
 
