@@ -36,11 +36,11 @@ func _on_insta_sell_commission_popup_ok_pressed() -> void:
 	Globals.insta_sell_commision = .75
 	Globals.total_gain = ceil(Globals.total_price * Globals.market_fluctuations * Globals.insta_sell_commision)
 
-	get_tree().change_scene_to_file("res://scenes/insta_sell.tscn")
+	Globals.sale_type = "Insta-"
+	get_tree().change_scene_to_file("res://scenes/sell.tscn")
 
 func _on_insta_sell_commission_popup_cancel_pressed() -> void:
 	$"../../../../../InstaSellCommissionPopup".visible = false
 
 func _on_pressed() -> void:
-	print("yes")
 	$"../../../../../InstaSellCommissionPopup".visible = true

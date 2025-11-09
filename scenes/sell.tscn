@@ -1,19 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq2s7jr5qgvmy"]
+[gd_scene load_steps=14 format=3 uid="uid://cq2s7jr5qgvmy"]
 
-[ext_resource type="Script" path="res://scripts/receipt_label_container.gd" id="1_2lcgw"]
-[ext_resource type="Script" path="res://scripts/resolution_label.gd" id="1_p1byn"]
-[ext_resource type="PackedScene" uid="uid://cyc3fr8p5vf5" path="res://scenes/popup.tscn" id="1_t7h8u"]
-[ext_resource type="Script" path="res://scripts/color_mastery_label.gd" id="3_xt11j"]
-[ext_resource type="Script" path="res://scripts/effort_bonus.gd" id="4_jww7a"]
-[ext_resource type="Script" path="res://scripts/detail_bonus.gd" id="5_dipud"]
-[ext_resource type="Script" path="res://scripts/total_price.gd" id="6_5lr4e"]
-[ext_resource type="Script" path="res://scripts/market_fluctuations.gd" id="7_r5acq"]
-[ext_resource type="Script" path="res://scripts/total_received.gd" id="8_gcs5q"]
-[ext_resource type="Script" path="res://scripts/insta_sell_commission.gd" id="9_ciuk5"]
-[ext_resource type="Script" path="res://scripts/net_gain.gd" id="10_aashd"]
-[ext_resource type="Script" path="res://scripts/new_file_button.gd" id="12_fnui3"]
+[ext_resource type="PackedScene" uid="uid://cyc3fr8p5vf5" path="res://scenes/popup.tscn" id="1_pg70h"]
+[ext_resource type="Script" path="res://scripts/receipt_label_container.gd" id="2_7y6xr"]
+[ext_resource type="Script" path="res://scripts/sale_summary.gd" id="3_w12bu"]
+[ext_resource type="Script" path="res://scripts/resolution_label.gd" id="4_inaw1"]
+[ext_resource type="Script" path="res://scripts/color_mastery_label.gd" id="5_byj1x"]
+[ext_resource type="Script" path="res://scripts/effort_bonus.gd" id="6_jqhll"]
+[ext_resource type="Script" path="res://scripts/detail_bonus.gd" id="7_772v4"]
+[ext_resource type="Script" path="res://scripts/total_price.gd" id="8_jvcyd"]
+[ext_resource type="Script" path="res://scripts/market_fluctuations.gd" id="9_nvc12"]
+[ext_resource type="Script" path="res://scripts/total_received.gd" id="10_623oi"]
+[ext_resource type="Script" path="res://scripts/insta_sell_commission.gd" id="11_ht68x"]
+[ext_resource type="Script" path="res://scripts/net_gain.gd" id="12_7lr6g"]
+[ext_resource type="Script" path="res://scripts/new_file_button.gd" id="13_p0c1k"]
 
-[node name="InstaSell" type="Control"]
+[node name="Sell" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NewFileFeeConfirmation" parent="." instance=ExtResource("1_t7h8u")]
+[node name="NewFileFeeConfirmation" parent="." instance=ExtResource("1_pg70h")]
 visible = false
 layout_mode = 2
 anchors_preset = 0
@@ -52,12 +53,13 @@ offset_bottom = 245.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_2lcgw")
+script = ExtResource("2_7y6xr")
 
 [node name="SaleSummary" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "INSTA-SALE SUMMARY"
+script = ExtResource("3_w12bu")
 
 [node name="BasePriceLabel" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
@@ -67,53 +69,53 @@ text = "Base Price: 10A"
 [node name="ResolutionLabel" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-script = ExtResource("1_p1byn")
+script = ExtResource("4_inaw1")
 
 [node name="ColorMasteryLabel" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-script = ExtResource("3_xt11j")
+script = ExtResource("5_byj1x")
 
 [node name="EffortBonus" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-script = ExtResource("4_jww7a")
+script = ExtResource("6_jqhll")
 
 [node name="DetailBonus" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-script = ExtResource("5_dipud")
+script = ExtResource("7_772v4")
 
 [node name="TotalPrice" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-script = ExtResource("6_5lr4e")
+script = ExtResource("8_jvcyd")
 
 [node name="MarketFluctuations" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-script = ExtResource("7_r5acq")
+script = ExtResource("9_nvc12")
 
 [node name="TotalReceived" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-script = ExtResource("8_gcs5q")
+script = ExtResource("10_623oi")
 
 [node name="InstaSellCommission" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-script = ExtResource("9_ciuk5")
+script = ExtResource("11_ht68x")
 
 [node name="NetGain" type="Label" parent="ReceiptLabelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-script = ExtResource("10_aashd")
+script = ExtResource("12_7lr6g")
 
 [node name="NewFileButton" type="Button" parent="ReceiptLabelContainer" node_paths=PackedStringArray("new_file_fee_confirmation_node")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "NEW FILE"
-script = ExtResource("12_fnui3")
+script = ExtResource("13_p0c1k")
 new_file_fee_confirmation_node = NodePath("../../NewFileFeeConfirmation")
 
 [connection signal="cancel_pressed" from="NewFileFeeConfirmation" to="ReceiptLabelContainer" method="_on_new_file_fee_confirmation_cancel_pressed"]

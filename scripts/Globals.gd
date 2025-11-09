@@ -17,3 +17,5 @@ static var market_fluctuations: float = 0.0
 static var total_received: int
 static var insta_sell_commision: float = .75
 static var total_gain: int = 0
+
+static var sale_type: String
